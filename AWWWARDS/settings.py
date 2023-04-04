@@ -102,7 +102,7 @@ DATABASES = {
 }
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://web-production-a935.up.railway.app/'
+    'https://web-production-a935.up.railway.app'
 ]
 
 
