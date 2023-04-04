@@ -1,0 +1,3 @@
+virtualenvironment/
+*.pyc
+.env
