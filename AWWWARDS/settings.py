@@ -102,7 +102,7 @@ DATABASES = {
 }
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://meaningful-conversations-production.up.railway.app'
+    'https://web-production-a935.up.railway.app/'
 ]
 
 
