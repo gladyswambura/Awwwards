@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 import dotenv 
 
 
@@ -88,22 +89,28 @@ WSGI_APPLICATION = 'AWWWARDS.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#         # 'ENGINE': 'django.db.backends.postgresql',
+#         # 'NAME': 'railway',
+#         # 'USER': 'postgres',
+#         # 'PASSWORD': 'kfQjM4k4MSlM8VydkGbg',
+#         # 'HOST': 'containers-us-west-129.railway.app',
+#         # 'PORT': '5717',
+#     }
+# }
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-        # 'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'railway',
-        # 'USER': 'postgres',
-        # 'PASSWORD': 'kfQjM4k4MSlM8VydkGbg',
-        # 'HOST': 'containers-us-west-129.railway.app',
-        # 'PORT': '5717',
-    }
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://web-production-a935.up.railway.app'
+    'https://Awwwards.onrender.com/'
 ]
+
 
 
 # Password validation
