@@ -89,23 +89,23 @@ WSGI_APPLICATION = 'AWWWARDS.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-        # 'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'railway',
-        # 'USER': 'postgres',
-        # 'PASSWORD': 'kfQjM4k4MSlM8VydkGbg',
-        # 'HOST': 'containers-us-west-129.railway.app',
-        # 'PORT': '5717',
-    }
-}
-
-
 # DATABASES = {
-#     'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#         # 'ENGINE': 'django.db.backends.postgresql',
+#         # 'NAME': 'railway',
+#         # 'USER': 'postgres',
+#         # 'PASSWORD': 'kfQjM4k4MSlM8VydkGbg',
+#         # 'HOST': 'containers-us-west-129.railway.app',
+#         # 'PORT': '5717',
+#     }
 # }
+
+
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+}
 
 CSRF_TRUSTED_ORIGINS = [
     'https://Awwwards.onrender.com/'
