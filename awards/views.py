@@ -15,12 +15,12 @@ from .serializer import ProfileSerializer, SiteSerializer
 from rest_framework.response import Response
 
 
-# Create your views here.
 @login_required(login_url='/accounts/login/')
 def index(request):
     site = Sites.objects.all()
     now = dt.datetime.now().day
     date = dt.date.today()
+    form = NewSiteForm()
 
     if request.method == "POST":
         form = NewSiteForm(request.POST)
@@ -28,19 +28,19 @@ def index(request):
             site = form.save(commit=False)
             site.user = request.user
             site.save()
-    else:
-        form = NewSiteForm()
 
     try:
         sites = Sites.objects.all()
-        sites = sites[::-1]
-        # a_site = random.randint(-1, len(sites) -1)
-        # random_site = sites[a_site]
-        # print(random_site.site_name)
+        if sites:
+            random_site = random.choice(sites)
+            print(random_site.site_name)
+        else:
+            # Handle case when no sites are available
+            random_site = None
     except Sites.DoesNotExist:
         raise Http404()
 
-    return render(request, 'main/index.html', {'sites': sites, 'form': form,  'date':date, 'now':now})
+    return render(request, 'main/index.html', {'sites': sites, 'form': form, 'random_site': random_site, 'date': date, 'now': now})
 
 
 # def register(request):             
